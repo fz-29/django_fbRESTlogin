@@ -5,9 +5,21 @@ This repository contains Boilerplate code for REST API Facebook login in Django 
 -> Authenticate via. Facebook Login <br>
 -> Token Based Approach ( Not session based ) <br>
 
-How it takes place : 
+### How it takes place : 
+
+POST 127.0.0.1:8000/rest-auth/facebook/
 
 1. Front End Side
+	* use JS SDK, to receive access_token associated with the user and the corressponding app.
+
+2. send the access_token to our Django REST API server
+	
+3. Our API server	
+	* our server sends this access_token to FB server, and authenticats access_token.
+	* on success
+		* if new user it fetches info about the user which presents the access_token, and inserts user to 'Social Accounts'
+		* insert the access_token and update key(token like entity for our server verifcation, to avoid repeated FB calls)
+	* sends back	
 
 
 ### Procedure for Code: 
@@ -24,3 +36,6 @@ How it takes place :
 	* Create url for FacebookLogin view.
 
 ### Procedure for Gaining Token: 
+	* Send a POST REQUEST with access_token. (POST[URL] & BODY->x-www-form-urlencode & access_token : <access_token received from Facebook>)
+	* Django Server Receieves and authenticates from FB server.
+	* Django server genarates its own key for that user and return it as response.
