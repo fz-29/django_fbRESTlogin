@@ -30,8 +30,8 @@ POST 127.0.0.1:8000/rest-auth/facebook/
 4. Check and run admin page
 5. Follow steps at [django-rest-auth : Documentation](http://django-rest-auth.readthedocs.io/en/latest/installation.html#social-authentication-optional)
 	* Add new apps to settings.py (better use settings.py from this project)
-	* Important to add the following in settings.py 
-
+	* Important to add the following in settings.py
+	```python
 	REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -39,6 +39,7 @@ POST 127.0.0.1:8000/rest-auth/facebook/
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     )
+    ```
 	* Migrate
 	* Now, add Add Social Application in django admin panel. (Add App Name, Client ID and Key)
 	* Create new view as a subclass of rest_auth.registration.views.SocialLoginView with FacebookOAuth2Adapter adapter as an attribute
@@ -49,13 +50,13 @@ POST 127.0.0.1:8000/rest-auth/facebook/
 
 ### Procedure for Gaining Token: 
 
-* Send a POST REQUEST with facebook's access_token. 
-(POST[URL] & BODY->x-www-form-urlencode & access_token : < access_token received from Facebook >)
+* Send a POST REQUEST with facebook's access_token. <br>
+POST[URL] & BODY->x-www-form-urlencode & access_token : < access_token received from Facebook >
 * Django Server Receieves and authenticates from FB server.
 * Django server genarates its own key for that user and return it as response.
 
 ### How to authenticate before performing some task in views
-* Check out [A views.py file : How to authenticate before performing request](https://github.com/fz-29/django_fbRESTlogin/blob/master/customers/views.py)
+* Check out [a views.py file : How to authenticate before performing request](https://github.com/fz-29/django_fbRESTlogin/blob/master/customers/views.py)
 * Requires the following before view definition
  
 ```python
