@@ -49,13 +49,14 @@ POST 127.0.0.1:8000/rest-auth/facebook/
 
 ### Procedure for Gaining Token: 
 
-* Send a POST REQUEST with facebook's access_token. (POST[URL] & BODY->x-www-form-urlencode & access_token : <access_token received from Facebook>)
+* Send a POST REQUEST with facebook's access_token. (POST[URL] & BODY->x-www-form-urlencode & access_token : <access_token received from Facebook >)
 * Django Server Receieves and authenticates from FB server.
 * Django server genarates its own key for that user and return it as response.
 
 ### How to authenticate before performing some task in views
 * Check out
 * Requires the following before view definition
+	*
 	@api_view(["POST"])
 	@authentication_classes([TokenAuthentication])
 	@permission_classes((IsAuthenticated,))
